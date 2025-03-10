@@ -27,7 +27,27 @@
             </select>
             <button type="submit" class="btn btn-success">Convertir</button>
         </form>
+
+        <h2 class="mt-4">Procesar Imagen</h2>
+        <form action="/procesar-imagen" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="imagen" class="form-control mb-2" required>
+            <button type="submit" class="btn btn-warning">Procesar Imagen</button>
+        </form>
     </div>
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert" style="max-width: 500px; margin: 20px auto; text-align: center;">
+        <strong>Éxito:</strong> {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="max-width: 500px; margin: 20px auto; text-align: center;">
+        <strong>Error:</strong> {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
 </body>
 
 </html>
